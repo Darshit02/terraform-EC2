@@ -64,11 +64,11 @@ resource "aws_security_group" "my_security_group" {
 resource "aws_instance" "terra-ec2" {
   key_name        = aws_key_pair.my_key.key_name
   security_groups = [aws_security_group.my_security_group.name]
-  instance_type   = "t2.micro"
+  instance_type   = var.ec2_instance_type
   #amazon machine image (ami)
-  ami = "ami-0c55b159cbfafe1f0" # ubuntu 20.04
+  ami = var.ec2_ami_id # ubuntu 20.04
   root_block_device {
-    volume_size = 15    # in GB
+    volume_size = var.ec2_root_storage_size    # in GB
     volume_type = "gp3" # General Purpose SSD
   }
   tags = {
