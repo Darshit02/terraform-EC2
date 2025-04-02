@@ -12,8 +12,8 @@ This repository contains Terraform configuration files to provision an **EC2 ins
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone (https://github.com/Darshit02/terraform-EC2.git)
+   cd terraform-EC2
    ```
 2. Initialize Terraform:
    ```sh
