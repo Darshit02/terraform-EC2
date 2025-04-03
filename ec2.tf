@@ -66,11 +66,11 @@ resource "aws_instance" "terra-ec2" {
   security_groups = [aws_security_group.my_security_group.name]
   instance_type   = var.ec2_instance_type
   #amazon machine image (ami)
-  ami = var.ec2_ami_id # ubuntu 20.04
+  ami       = var.ec2_ami_id           # ubuntu 20.04
   user_data = file("install_nginx.sh") # install nginx on ec2 instance
   root_block_device {
-    volume_size = var.ec2_root_storage_size    # in GB
-    volume_type = "gp3" # General Purpose SSD
+    volume_size = var.env == "prd" ? 15 : var.ec2_default_root_storage_size # in GB
+    volume_type = "gp3"                                                     # General Purpose SSD
   }
   tags = {
     Name = "terraform-ec2-automate"
